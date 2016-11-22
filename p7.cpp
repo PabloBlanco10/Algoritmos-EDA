@@ -120,3 +120,132 @@ int main(){
     return 0;
     
 }
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+//////////// HECHO EN CLASE
+
+void movilEquilibrado(int pi, int di, int pd, int dd,
+                      int &peso, bool &equilibrado){
+    
+    int pi2, di2, pd2, dd2;
+    bool equilIz = true, equilDr = true;
+    
+    if(pi == 0){
+        cin >> pi2 >> di2 >> pd2 >> dd2;
+        movilEquilibrado(pi2, di2, pd2, dd2, pi, equilIz);
+    }
+    
+    
+    if(pd == 0){
+        cin >> pi2 >> di2 >> pd2 >> dd2;
+        movilEquilibrado(pi2, di2, pd2, dd2, pd, equilDr);
+    }
+    
+    peso = pi + pd;
+    equilibrado = equilIz && equilDr && (pi * di == pd * dd)
+    
+    
+}
+
+
+
+
+
+//si pi != 0 y pd != 0 caso base
+// actualizar peso (pi + pd)
+// decir si esta equilibrado
+// si no
+// llamada recursiva movil izq
+// llamada recursiva movil dcho
+// actualizar peso
+// decir si esta equilibrado
+
+//
+//if((pi != 0) && (pd != 0)){
+//    peso = pi + pd;
+//    equilibrado = pi * di == pd * dd);
+//}
+//else{
+//    int pi2, di2, pd2, dd2;
+//    int pesoIz;
+//    bool equilIz;
+//    
+//    if(pi == 0){
+//        cin >> pi2 >> di2 >> pd2 >> dd2;
+//        movilEquilibrado(pi2, di2, pd2, dd2, pesoIz, equilIz);
+//    }
+//    else {
+//        pesoIz = pi;
+//        equilIz = true;
+//    }
+//}
+//
+//int pesoDr;
+//bool equilDr;
+//
+//
+//if(pd == 0){
+//    cin >> pi2 >> di2 >> pd2 >> dd2;
+//    movilEquilibrado(pi2, di2, pd2, dd2, pesoDr, equilDr);
+//}
+//else {
+//    pesoDr = pd;
+//    equilDr = true;
+//}
+//peso = pesoIz + pesoDr;
+//equilibrado = equilIz && equilDr && (pesoIz * di == pesoDr * dd)
+
+
+
+
+
+
+
+bool resuelve(){
+    int pi, di, pd, dd;
+    cin >> pi >> di >> pd >> dd;
+    if((pi == 0) && (di == 0) && (pd == 0) && (dd == 0))
+        return false;
+    
+    int peso;
+    bool equilibrado;
+    movilEquilibrado(pi, pd, dd, peso, equilibrado);
+    if(equilibrado)
+        cout << "SI" << endl;
+    else
+        cout << "NO" << endl;
+}
+
+
+
+int main(){
+    while(resuelve())
+        ;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
