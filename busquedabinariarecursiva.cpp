@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-
+//se supone un vector ordenado.
 int buscaBin(int v[], int a, int b, int x){
     int r;
     if(a == b + 1) {

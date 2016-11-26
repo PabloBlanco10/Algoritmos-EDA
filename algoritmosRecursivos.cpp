@@ -143,6 +143,13 @@ int hostal(int v[], int n, int i, int &potDos){
     
 }
 
+
+//ejercicio 18
+int complementario(int n){
+    
+    
+}
+
 bool resuelve(){
     int n;
     //cout << 13 % 2 << endl << 10 / 10 << endl;
@@ -156,6 +163,7 @@ bool resuelve(){
 //        decimalABinario(n);
 //        cout << endl;
 //        cin >> n;
+        cout << 146720 % 10;
         for(int j = 0; j < n; j++){
             int aux;
             cin >> aux;
