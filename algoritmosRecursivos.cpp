@@ -18,7 +18,6 @@ using namespace std;
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
-
 // de decimal a binario
 void decimalABinario(int n){
     int r = n % 2;
@@ -45,19 +44,40 @@ int binarioADecimal(int n){
 
 //ejercicio 16 Existe algun v[i] = i
 
-bool dieciseis(int v[], int n, int i){
+bool dieciseis(int v[], int a, int b){
+    int m = (a+b)/2;
     bool r;
     
-    if(v[i] == i)
-        return true;
-    else if (i < n - 1){
-        i++;
-        r = dieciseis(v, n, i);
+    if (a > b)
+        r = false;
+    else{
+        if(v[m] == m)
+            r = true;
+        else if(v[m] < m)
+            r = dieciseis(v, m+1, b);
+        else
+            r = dieciseis(v, a, m-1);
     }
-    else if(i >= n)
-        return false;
     return r;
 }
+
+
+// t(n):
+//        - caso base si n = 0
+//        - t (n/2) + c si n > 0
+//t(n) pertenece O(log n)
+//n = b - a + 1;
+
+
+//mover n discos de a -> c usando b como auxiliar
+void hanoi(int a, int b, int c, int n){
+    if(n > 0){
+        hanoi(a, c, b, n - 1);
+        cout << a << " -> " << b << endl;
+        hanoi(b ,a, c, n - 1);
+    }
+}
+//llamada: hanoi(0,1,2,6);
 
 void particion ( int v[], int a, int b, int & p) { // Pre: 0  a  b  longitud(v) 1
     int i, j; int aux;
@@ -147,8 +167,15 @@ int hostal(int v[], int n, int i, int &potDos){
 //ejercicio 18
 int complementario(int n){
     
-    
+    int r;
+    if(n > 9){
+        int digito = n%10;
+        r = complementario(n/10) * 10 + (9 - digito);
+    }
+    else r = 9 - digito;
+    return r;
 }
+// Q = { r = 10 elevado a digitos(n) - 1 - n}
 
 bool resuelve(){
     int n;
