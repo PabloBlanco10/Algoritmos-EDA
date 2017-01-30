@@ -172,7 +172,7 @@ int complementario(int n){
         int digito = n%10;
         r = complementario(n/10) * 10 + (9 - digito);
     }
-    else r = 9 - digito;
+    else r = 9 - n;
     return r;
 }
 // Q = { r = 10 elevado a digitos(n) - 1 - n}
