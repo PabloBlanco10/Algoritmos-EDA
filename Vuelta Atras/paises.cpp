@@ -15,16 +15,39 @@ using namespace std;
 const int MP = 20; // Num max de paises
 const int MC = 20; // Num max de colores
 
-void mapas(int paises[], int colores[], int fronteras[MP][MP],int sol[], int npaises, int ncolores, int k, int coste, int &mejorcoste){
+
+
+bool esValida(int sol[], int k, bool fronteras[MP][MP]){
+    bool ok = true;
     
+    for(int i = 0; (i < k) && ok; i++){
+        if((fronteras[k][i]) && (sol[k] == sol[i]))
+            ok = false;
+    }
+    
+    return ok;
+}
+
+void colorearMapa(int k, int sol[], int npaises, int ncolores, int paises[], int colores[], bool fronteras[MP][MP], int coste, int &mejorcoste){
+
     for(int i = 0; i < ncolores; i++){
         sol[k] = i;
-        if(esValida()){
-            
+        if(esValida(sol, k, fronteras)){
+            coste += paises[k] * colores[i];
+            if(k == npaises-1){
+                if(coste < mejorcoste){
+                    mejorcoste = coste;
+                }
+            }
+            else{
+                colorearMapa(k+1, sol, npaises, ncolores, paises, colores, fronteras, coste, mejorcoste);
+                coste -= paises[k] * colores[i];
+            }
         }
     }
     
 }
+
 
 int main() {
     int nmapas;    // num de mapas a colorear
@@ -38,6 +61,7 @@ int main() {
     // fronteras[i][j] indica si existe frontera entre los paises i y j en el mapa
     // Es una matriz simetrica (fronteras[i][j] == fronteras[j][i])
     bool fronteras[MP][MP];
+    int sol[MP];
     
     // Leer numero de mapas del caso de pruebas
     cin >> nmapas;
@@ -62,12 +86,13 @@ int main() {
         }
         
         int mejorcoste = INT_MAX;
+        int coste = 0;
+        int k = 0;
         
         /* Llama aquí a tu procedimiento y calcula el valor de mejorcoste */
         /* .... */
-        
-        
-        
+        colorearMapa(k, sol, npaises, ncolores, paises, colores, fronteras, coste, mejorcoste);
+
         cout << mejorcoste << endl;
     }
     

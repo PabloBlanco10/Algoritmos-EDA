@@ -18,6 +18,19 @@ using namespace std;
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
+int especular(int n, int pow){
+    int r;
+    if(n < 10){
+        r = n;
+    }
+    else{
+        int digito = n%10 *pow +;
+        r = especular(n/10, pow*10) + digito*pow*10;
+    }
+    return r;
+}
+
+
 // de decimal a binario
 void decimalABinario(int n){
     int r = n % 2;
@@ -178,42 +191,45 @@ int complementario(int n){
 // Q = { r = 10 elevado a digitos(n) - 1 - n}
 
 bool resuelve(){
-    int n;
-    //cout << 13 % 2 << endl << 10 / 10 << endl;
-    cin >> n;
-    int v[1000];
-    int dist, distMejor, primero, segundo, potDos = 1;
-    
-    
-    while(n>=0){
-       // cout <<  binarioADecimal(n) << endl;
+//    int n;
+//    //cout << 13 % 2 << endl << 10 / 10 << endl;
+//    cin >> n;
+//    int v[1000];
+////    int dist, distMejor, primero, segundo, potDos = 1;
+////    
+//    
+//    while(n>=0){
+//       // cout <<  binarioADecimal(n) << endl;
 //        decimalABinario(n);
 //        cout << endl;
 //        cin >> n;
-        cout << 146720 % 10;
-        for(int j = 0; j < n; j++){
-            int aux;
-            cin >> aux;
-            v[j] = aux;
-        }
-        
-        cout <<  hostal(v,n,0,potDos) << endl;
-//        quickSort(v,0,n-1);
-//        primero = v[0];
-//        segundo = v[1];
-//        distMejor = segundo - primero;
-//        //ejercicio1(v, n, 1, primero, segundo, distMejor);
-//        ejercicio2(v, n, 0, primero, segundo);
-//        cout << "La mayor distancia es de: " << distMejor
-//        << "   -    " << primero << " - " << segundo << endl;
-//
-//        if(dieciseis(v,n,0))
-//            cout << "si" << endl;
-//        else
-//            cout << "no" << endl;
-        
-        cin >> n;
-    }
+        int n;
+        cin >> n ;
+        cout << especular(n, 1);
+//        cout << 146720 % 10;
+//        for(int j = 0; j < n; j++){
+//            int aux;
+//            cin >> aux;
+//            v[j] = aux;
+//        }
+//        
+//        cout <<  hostal(v,n,0,potDos) << endl;
+////        quickSort(v,0,n-1);
+////        primero = v[0];
+////        segundo = v[1];
+////        distMejor = segundo - primero;
+////        //ejercicio1(v, n, 1, primero, segundo, distMejor);
+////        ejercicio2(v, n, 0, primero, segundo);
+////        cout << "La mayor distancia es de: " << distMejor
+////        << "   -    " << primero << " - " << segundo << endl;
+////
+////        if(dieciseis(v,n,0))
+////            cout << "si" << endl;
+////        else
+////            cout << "no" << endl;
+//        
+//        cin >> n;
+//    }
     return false;
 }
 

@@ -90,7 +90,7 @@ void domino(int sol[], int k, bool marcas[N][N]){
 
 void actualizarPosActual(int &fact, int &cact, int m, bool &dentro){
     dentro = true;
-    switch (ma) {
+    switch (m) {
         case 0:
             if(fact > 0)
                 fact--;
